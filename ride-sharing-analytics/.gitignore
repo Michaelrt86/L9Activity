@@ -1,0 +1,6 @@
+# Ignore checkpoint directory
+checkpoint/
+
+# Ignore everything in output except CSV files
+output/*
+!output/*.csv

@@ -3,7 +3,7 @@ from pyspark.sql.functions import from_json, col, avg, sum
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType, TimestampType
 
 # Create a Spark session
-
+spark = SparkSession.builder.appName("RideSharingAnalytics-2").getOrCreate()
 
 # Define the schema for incoming JSON data
 
