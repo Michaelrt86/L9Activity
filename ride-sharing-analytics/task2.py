@@ -35,11 +35,9 @@ agg_df = parsed_df.groupBy("driver_id").agg(
 
 # Define a function to write each batch to a CSV file
 def write_batch(batch_df, batch_id):
-    # Save the batch DataFrame as a CSV file with the batch ID in the filename
-    batch_df.write.csv(f"output/task-2/batch_{batch_id}", header=True, mode="overwrite")
 
 # Save the batch DataFrame as a CSV file with the batch ID in the filename
-    
+    batch_df.write.csv(f"output/task-2/batch_{batch_id}", header=True, mode="overwrite")
 
 # Use foreachBatch to apply the function to each micro-batch
 query = agg_df.writeStream \
