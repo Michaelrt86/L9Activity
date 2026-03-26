@@ -4,13 +4,22 @@ from pyspark.sql.functions import from_json, col, avg, sum
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType, TimestampType
 
 # Create a Spark session
-spark = SparkSession.builder.appName("RideSharingAnalytics-2").getOrCreate()
+spark = SparkSession.builder.appName("RideSharingAnalytics-3").getOrCreate()
 
 # Define the schema for incoming JSON data
+schema = StructType([
+    StructField("trip_id", StringType(), True),
+    StructField("driver_id", StringType(), True),
+    StructField("distance_km", DoubleType(), True),
+    StructField("fare_amount", DoubleType(), True),
+    StructField("timestamp", StringType(), True)
+])
 
 # Read streaming data from socket
+df = spark.readStream.format("socket").option("host", "localhost").option("port", "9999").load()
 
 # Parse JSON data into columns using the defined schema
+parsed_df = df.select(from_json(col("value"), schema).alias("data")).select("data.*")
 
 # Convert timestamp column to TimestampType and add a watermark
 

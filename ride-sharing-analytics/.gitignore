@@ -2,5 +2,10 @@
 checkpoint/
 
 # Ignore everything in output except CSV files
-output/*
-!output/*.csv
+output/task-1/*
+output/task-2/*
+output/task-3/*
+
+!output/task-1/*.csv
+!output/task-2/*.csv
+!output/task-3/*.csv
