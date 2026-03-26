@@ -3,9 +3,16 @@ checkpoint/
 
 # Ignore everything in output except CSV files
 output/task-1/*
-output/task-2/*
+output/task-2/batch_*/*
 output/task-3/*
 
+# Ignore all files in task-2 batch folders (but allow CSV)
+
+!output/task-2/batch_*/*.csv
+
+# Keep CSV files in output tasks
 !output/task-1/*.csv
-!output/task-2/*.csv
+
 !output/task-3/*.csv
+
+# Also keep CSV files in batch subfolders under task-2
